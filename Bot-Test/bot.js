@@ -5,10 +5,12 @@ bot.on('ready', () => {
   console.log("On...")
 });
 
-bot.on('guildMemberAdd', member => {
-  const channel = member.guild.channels.find(ch => ch.name === 'hello');
-  if (!channel) return;
-  channel.send(`Welcome to the server, ${member}`);
-});
+// Create an event listener for messages
+client.on('message', message => {
+  // If the message is "what is my avatar"
+  if (message.content === 'what is my avatar') {
+    // Send the user's avatar URL
+    message.reply(message.author.avatarURL);
+  }
 
 bot.login(process.env.BOT_TOKEN);

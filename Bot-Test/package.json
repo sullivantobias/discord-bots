@@ -1,0 +1,9 @@
+{
+  "name": "test-bot",
+  "version": "1.0.0",
+  "description": "My own Discord bot",
+  "author": "remoh",
+  "dependencies": {
+    "discord.js": "^11.4.2"
+  }
+}

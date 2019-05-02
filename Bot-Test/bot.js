@@ -12,6 +12,6 @@ bot.on('message', message => {
     // Send the user's avatar URL
     message.reply(message.author.avatarURL);
   }
-}
+});
 
 bot.login(process.env.BOT_TOKEN);

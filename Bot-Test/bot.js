@@ -5,13 +5,11 @@ bot.on('ready', () => {
   console.log("On...")
 });
 
-// Create an event listener for messages
-bot.on('message', message => {
-  // If the message is "what is my avatar"
-  if (message.content === 'what is my avatar') {
-    // Send the user's avatar URL
-    message.reply(message.author.avatarURL);
-  }
-});
+const {GuildMemberManagement} = require('./scripts/GuildMemberManagement');
+const GuildManagement = new GuildMemberManagement(bot);
+// start users management //
+GuildManagement.guildMemberIn();
+GuildManagement.guildMemberOut();
+// end users management //
 
 bot.login(process.env.BOT_TOKEN);

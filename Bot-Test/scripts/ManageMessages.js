@@ -32,7 +32,7 @@ class ManageMessages {
         ) {
           // get log channel //
           const log = this.bot.channels.find(
-            channel => channel.name === "logs"
+            channel => channel.name === "log"
           );
           // warning message
           let warning = `${

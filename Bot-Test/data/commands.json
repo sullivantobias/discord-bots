@@ -1,0 +1,10 @@
+{
+    "help": {
+        "val": "!help",
+        "desc": "show all the commands"
+    },
+    "invite": {
+        "val": "!invite",
+        "desc": "create an invitation to the discord"
+    }
+}

@@ -1,10 +1,27 @@
 {
-    "help": {
-        "val": "!help",
-        "desc": "show all the commands"
+  "help": {
+    "val": "!help",
+    "desc": "show all the commands"
+  },
+  "invite": {
+    "val": "!invite",
+    "desc": "create an invitation to the discord"
+  },
+  "urls": {
+    "twitter": {
+      "val": "twitter",
+      "desc": "get wavenFR twitter",
+      "url": "https://twitter.com/wavenfr"
     },
-    "invite": {
-        "val": "!invite",
-        "desc": "create an invitation to the discord"
+    "youtube": {
+      "val": "youtube",
+      "desc": "get wavenFR youtube",
+      "url": "https://www.youtube.com/channel/UCG-9htpBpnCfRFBDuaPx2kA"
+    },
+    "website": {
+      "val": "website",
+      "desc": "get wavenFR website",
+      "url": "https://www.waven-game.com/en"
     }
+  }
 }

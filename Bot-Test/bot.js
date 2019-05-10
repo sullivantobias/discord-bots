@@ -20,6 +20,6 @@ ManageMsg.manageMessages();
 const { Invite } = require("./scripts/Invite");
 const createInvite = new Invite(bot);
 
-createInvite.createInvite();
+createInvite.activeCommands();
 
 bot.login(process.env.BOT_TOKEN);

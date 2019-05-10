@@ -32,17 +32,17 @@ class ManageMessages {
         ) {
           // get log channel //
           const log = this.bot.channels.find(
-            channel => channel.name === "log"
+            channel => channel.name === "logs"
           );
           // warning message
           let warning = `${
             message.author
-            } | '${word}' n'est pas autorisé, Attention au language 👿`;
+          } | '${word}' n'est pas autorisé, Attention au language 👿`;
           // check lang (fr by default) //
           if (lang === "EN")
             warning = `${
               message.author
-              } | '${word}' is forbidden , pay attention to your language 👿`;
+            } | '${word}' is forbidden , pay attention to your language 👿`;
 
           message.channel.send(warning);
           // logs //

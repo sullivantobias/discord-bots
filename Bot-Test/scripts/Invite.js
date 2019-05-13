@@ -4,9 +4,8 @@
 const command = require("../data/commands");
 
 class Invite {
-  constructor(bot, discord) {
+  constructor(bot) {
     this.bot = bot;
-    this.discord = discord
     this.embedCommands = {};
   }
 

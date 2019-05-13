@@ -10,6 +10,7 @@ class Rss {
     }
 
     getFlux(config) {
+        console.log(config)
         const flux = this.bot.channels.find(
             channel => channel.id === "572904579566403586" || channel.id === "577400706508521482"
         );

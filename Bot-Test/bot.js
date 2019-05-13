@@ -30,4 +30,4 @@ bot.on("ready", () => {
 
 });
 
-bot.login(process.env.BOT_TOKEN);
+bot.login(process.env.BOT_TOKEN || "NTczNTMwNTE5NjMxOTUzOTIx.XNnhtA.cOcgDT93Gjj5f6cF092ZEXMvRt8");

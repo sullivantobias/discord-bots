@@ -11,7 +11,7 @@ class Rss {
 
     getFlux(config) {
         const flux = this.bot.channels.find(
-            channel => channel.id === "572904579566403586"
+            channel => channel.id === "572904579566403586" || channel.id === "577400706508521482"
         );
 
         var T = new Twitter(config);
@@ -39,7 +39,7 @@ class Rss {
                 }
             })
         }
-        setInterval(fluxRSS, 1000 * 60)
+        setInterval(fluxRSS, 1000 * 10)
     };
 }
 

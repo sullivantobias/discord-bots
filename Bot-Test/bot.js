@@ -18,7 +18,7 @@ const ManageMsg = new ManageMessages(bot);
 ManageMsg.manageMessages();
 
 const { Invite } = require("./scripts/Invite");
-const createInvite = new Invite(bot);
+const createInvite = new Invite(bot, Discord);
 
 createInvite.activeCommands();
 

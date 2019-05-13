@@ -4,8 +4,10 @@
 const command = require("../data/commands");
 
 class Invite {
-  constructor(bot) {
+  constructor(bot, discord) {
     this.bot = bot;
+    this.discord = discord
+    this.embedCommands = {};
   }
 
   activeCommands() {
@@ -14,24 +16,34 @@ class Invite {
     };
 
     this.bot.on("message", msg => {
+      let desc = '';
+
       if (msg.channel.id === "572686187014258689") {
         switch (msg.toString()) {
           case command.help.val:
-            msg.channel.send("--------COMMANDS--------");
             for (const cmd in command) {
-              msg.channel.send(
-                `**command**: ${command[cmd].val} | **desc**: ${
-                  command[cmd].desc
-                }`
-              );
+              if (command[cmd].val !== undefined) {
+                desc += `**cmd**: ${command[cmd].val} | **desc**: ${command[cmd].desc} \n`
+              }
             }
+
             for (const cmd in command.urls) {
-              msg.channel.send(
-                `**command**: ${command.urls[cmd].val} | **desc**: ${
-                  command.urls[cmd].desc
-                }`
-              );
+              desc += `**cmd**: ${command.urls[cmd].val} | **desc**: ${command.urls[cmd].desc} \n`
             }
+
+            this.embedCommands = {
+              color: 0xCC0000,
+              title: '✍️✍️COMMANDS✍️✍️',
+              description: desc,
+              footer: {
+                text: `© Oropo | ${new Date().toLocaleString([], { year: '2-digit', month: '2-digit' })}`,
+              },
+            }
+
+            msg.channel.send(
+              { embed: this.embedCommands }
+            );
+
             break;
           case command.invite.val:
             // Create an invite to a channel

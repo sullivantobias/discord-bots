@@ -9,18 +9,18 @@
   },
   "urls": {
     "twitter": {
-      "val": "twitter",
-      "desc": "get wavenFR twitter",
+      "val": "!url-twitter",
+      "desc": "get Waven twitter",
       "url": "https://twitter.com/wavenfr"
     },
     "youtube": {
-      "val": "youtube",
-      "desc": "get wavenFR youtube",
+      "val": "!url-youtube",
+      "desc": "get Ankama youtube",
       "url": "https://www.youtube.com/channel/UCG-9htpBpnCfRFBDuaPx2kA"
     },
     "website": {
-      "val": "website",
-      "desc": "get wavenFR website",
+      "val": "!url-website",
+      "desc": "get Waven website",
       "url": "https://www.waven-game.com/en"
     }
   }

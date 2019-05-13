@@ -2,6 +2,7 @@
  * @class Rss
  */
 const Twitter = require('twitter');
+const { Config } = require('../data/twitterConfig')
 
 class Rss {
     constructor(bot) {
@@ -9,13 +10,12 @@ class Rss {
         this.lastTweet = ''
     }
 
-    getFlux(config) {
-        console.log(config)
+    getFlux() {
         const flux = this.bot.channels.find(
             channel => channel.id === "572904579566403586" || channel.id === "577400706508521482"
         );
 
-        var T = new Twitter(config);
+        var T = new Twitter(Config);
         // Initiate your search using the above paramaters
         const fluxRSS = () => {
             T.get('https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=WavenFR&count=1', (err, response) => {
@@ -40,7 +40,7 @@ class Rss {
                 }
             })
         }
-        setInterval(fluxRSS, 1000 * 10)
+        setInterval(fluxRSS, 1000 * 60)
     };
 }
 

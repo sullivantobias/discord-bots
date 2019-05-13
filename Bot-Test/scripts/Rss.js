@@ -2,7 +2,6 @@
  * @class Rss
  */
 const Twitter = require('twitter');
-const { Config } = require('../data/twitterConfig')
 
 class Rss {
     constructor(bot) {
@@ -10,12 +9,12 @@ class Rss {
         this.lastTweet = ''
     }
 
-    getFlux() {
+    getFlux(config) {
         const flux = this.bot.channels.find(
             channel => channel.id === "572904579566403586"
         );
 
-        var T = new Twitter(Config);
+        var T = new Twitter(config);
         // Initiate your search using the above paramaters
         const fluxRSS = () => {
             T.get('https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=WavenFR&count=1', (err, response) => {

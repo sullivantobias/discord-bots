@@ -23,9 +23,10 @@ bot.on("ready", () => {
 
 
   const { Rss } = require("./scripts/Rss");
+  const { Config } = require('./data/twitterConfig')
   const fluxRss = new Rss(bot);
 
-  fluxRss.getFlux()
+  fluxRss.getFlux(Config)
 
 });
 

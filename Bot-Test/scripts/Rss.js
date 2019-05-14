@@ -41,29 +41,29 @@ class Rss {
             })
         }
         setInterval(fluxRSS, 1000 * 60 * 2)
-        //1000 * 60 * 60 *1.5
     };
 
     getYoutubeFlux() {
         const youtubeFlux = this.bot.channels.find(
             channel => channel.id === "573111433630580736" || channel.id === "577830161295081473"
         );
+        const fluxRSS = () => {
+            for (const channel in Config) {
+                request(`https://www.googleapis.com/youtube/v3/search?key=${youtubeConfig}&channelId=${Config[channel]}&part=snippet,id&order=date&maxResults=1`, (error, response, body) => {
+                    if (!error && response.statusCode === 200) {
+                        const jsonResponse = JSON.parse(body)
 
-        for (const channel in Config) {
-            request(`https://www.googleapis.com/youtube/v3/search?key=${youtubeConfig}&channelId=${Config[channel]}&part=snippet,id&order=date&maxResults=1`, (error, response, body) => {
-                if (!error) {
-                    console.log(body)
-                    const jsonResponse = JSON.parse(body)
+                        jsonResponse.items.forEach(element => {
+                            Object.assign(this.lastYoutubeVideo, { channelTitle: element.snippet.channelTitle, videoId: element.id.videoId });
+                        });
 
-                    jsonResponse.items.forEach(element => {
-                        Object.assign(this.lastYoutubeVideo, { channelTitle: element.snippet.channelTitle, videoId: element.id.videoId });
-                    });
-
-                    const urlVideo = `**Author: ${this.lastYoutubeVideo.channelTitle}** http://www.youtube.com/watch?v=${this.lastYoutubeVideo.videoId}`
-                    this.checkAndSend(youtubeFlux, urlVideo)
-                }
-            });
+                        const urlVideo = `**Author: ${this.lastYoutubeVideo.channelTitle}** http://www.youtube.com/watch?v=${this.lastYoutubeVideo.videoId}`
+                        this.checkAndSend(youtubeFlux, urlVideo)
+                    }
+                });
+            }
         }
+        setInterval(fluxRSS, 1000 * 60 * 60 * 1.5)
     }
 
     checkAndSend(channel, url) {

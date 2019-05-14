@@ -25,7 +25,8 @@ bot.on("ready", () => {
   const { Rss } = require("./scripts/Rss");
   const fluxRss = new Rss(bot);
 
-  fluxRss.getFlux()
+  fluxRss.getTwitterFlux();
+  fluxRss.getYoutubeFlux();
 
 });
 

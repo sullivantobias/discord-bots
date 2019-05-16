@@ -11,6 +11,6 @@ const twitterConfig = {
 const youtubeConfig = {
     apiKey: process.env.YOUTUBE_API_KEY || 'AIzaSyDqvOiIjyZiBoeKUZWHw1OdvrUb30sVgwc'
 }
-
+// exports
 module.exports.twitterConfig = twitterConfig
 module.exports.youtubeConfig = youtubeConfig.apiKey

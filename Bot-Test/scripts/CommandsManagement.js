@@ -1,15 +1,24 @@
-/**
- * @class Invite
- */
+// imports
 const command = require("../data/commands");
-
-class Invite {
+const { CHANNELS } = require('../data/channels')
+/**
+ * @class CommandsManagement
+ * @description handle command inputs
+ */
+class CommandsManagement {
+  /**
+   * @constructor
+   * @param {*} bot 
+   */
   constructor(bot) {
     this.bot = bot;
     this.embedCommands = {};
   }
-
+  /**
+   * @method activeCommands
+   */
   activeCommands() {
+    // set options
     var options = {
       maxAge: 0
     };
@@ -17,7 +26,7 @@ class Invite {
     this.bot.on("message", msg => {
       let desc = '';
 
-      if (msg.channel.id === "572686187014258689") {
+      if (msg.channel.id === CHANNELS.bots) {
         switch (msg.toString()) {
           case command.help.val:
             for (const cmd in command) {
@@ -29,7 +38,7 @@ class Invite {
             for (const cmd in command.urls) {
               desc += `**cmd**: ${command.urls[cmd].val} | **desc**: ${command.urls[cmd].desc} \n`
             }
-
+            // build embed message
             this.embedCommands = {
               color: 0xCC0000,
               title: '✍️✍️COMMANDS✍️✍️',
@@ -65,9 +74,14 @@ class Invite {
       }
     });
   }
+  /**
+   * @method getUrl
+   * @param {*} msg 
+   * @param {*} url 
+   */
   getUrl(msg, url) {
     msg.channel.send(url);
   }
 }
-
-module.exports.Invite = Invite;
+//export
+module.exports.CommandsManagement = CommandsManagement;

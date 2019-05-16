@@ -1,12 +1,18 @@
-/**
- * @class Rss
- */
+//imports
 const Twitter = require('twitter');
 const request = require('request');
 const { twitterConfig, youtubeConfig } = require('../data/fluxConfig')
 const { Config } = require('../data/youtubeChannelsConfig')
-
+const { CHANNELS } = require('../data/channels')
+/**
+ * @class Rss
+ * @description retrieve differents flux
+ */
 class Rss {
+    /**
+     * @constructor
+     * @param {*} bot 
+     */
     constructor(bot) {
         this.bot = bot;
         this.lastTweet = ''
@@ -15,10 +21,13 @@ class Rss {
             videoId: ''
         }
     }
-
+    /**
+     * @method getTwitterFlux
+     */
     getTwitterFlux() {
+        // get twitterFlux channel
         const twitterFlux = this.bot.channels.find(
-            channel => channel.id === "572904579566403586" || channel.id === "577400706508521482"
+            channel => channel.id === CHANNELS.twitterFlux
         );
 
         var T = new Twitter(twitterConfig);
@@ -40,12 +49,15 @@ class Rss {
                 }
             })
         }
+        // each 2 minutes
         setInterval(fluxRSS, 1000 * 60 * 2)
     };
-
+    /**
+     * @method getYoutubeFlux
+     */
     getYoutubeFlux() {
         const youtubeFlux = this.bot.channels.find(
-            channel => channel.id === "573111433630580736" || channel.id === "577830161295081473"
+            channel => channel.id === CHANNELS.youtubeFlux
         );
         const fluxRSS = () => {
             for (const channel in Config) {
@@ -63,9 +75,14 @@ class Rss {
                 });
             }
         }
+        // each 90 minutes
         setInterval(fluxRSS, 1000 * 60 * 60 * 1.5)
     }
-
+    /**
+     * @method checkAndSend
+     * @param {*} channel 
+     * @param {*} url 
+     */
     checkAndSend(channel, url) {
         let allMessages = [];
         channel.fetchMessages().then(messages => {
@@ -79,5 +96,5 @@ class Rss {
             .catch(console.error);
     }
 }
-
+// export
 module.exports.Rss = Rss;

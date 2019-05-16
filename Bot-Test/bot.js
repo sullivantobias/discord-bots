@@ -5,29 +5,31 @@ bot.on("ready", () => {
   console.log("Runnin...");
 
   const { GuildMemberManagement } = require("./scripts/GuildMemberManagement");
-  const GuildManagement = new GuildMemberManagement(bot);
+  const guildMemberManagement = new GuildMemberManagement(bot);
   // start users management //
-  GuildManagement.guildMemberIn();
-  GuildManagement.guildMemberOut();
+  guildMemberManagement.guildMemberIn();
+  guildMemberManagement.guildMemberOut();
   // end users management //
 
   const { ManageMessages } = require("./scripts/ManageMessages");
-  const ManageMsg = new ManageMessages(bot);
+  const manageMessages = new ManageMessages(bot);
+  // start messages management //
+  manageMessages.manageMessages();
+  // end messages management //
 
-  ManageMsg.manageMessages();
-
-  const { Invite } = require("./scripts/Invite");
-  const createInvite = new Invite(bot);
-
-  createInvite.activeCommands();
-
+  const { CommandsManagement } = require("./scripts/CommandsManagement");
+  const commandsManagement = new CommandsManagement(bot);
+  // start commands management //
+  commandsManagement.activeCommands();
+  // end commands  management //
 
   const { Rss } = require("./scripts/Rss");
-  const fluxRss = new Rss(bot);
-
-  fluxRss.getTwitterFlux();
-  fluxRss.getYoutubeFlux();
-
+  const rss = new Rss(bot);
+  // start rss  management //
+  rss.getTwitterFlux();
+  rss.getYoutubeFlux();
+  // end  rss  management //
 });
-
-bot.login(process.env.BOT_TOKEN || "NTczNTMwNTE5NjMxOTUzOTIx.XNnhtA.cOcgDT93Gjj5f6cF092ZEXMvRt8");
+const { VARIABLES } = require('./data/variables')
+// init bot
+bot.login(VARIABLES.bot_token);

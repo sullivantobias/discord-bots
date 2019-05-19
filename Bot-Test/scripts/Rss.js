@@ -90,7 +90,7 @@ class Rss {
                 allMessages.push(item.content)
             })
             const isExist = allMessages.includes(url)
-            console.log(isExist, 'url already existing')
+            console.log(allMessages, "URL ARRAY")
 
             if (!isExist) channel.send(url)
         })
